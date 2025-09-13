@@ -68,3 +68,4 @@ project.lock.json
 # Test results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+/PsicologaJessicaAlbuquerque/wwwroot/lib/bootstrap/dist

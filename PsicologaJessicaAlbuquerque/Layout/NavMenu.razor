@@ -1,0 +1,16 @@
+﻿<MudNavMenu>
+    <MudImage Src="@(IsDarkMode
+        ? "images/Logo Psicóloga Jéssica Albuquerque clara.png"
+        : "images/Logo Psicóloga Jéssica Albuquerque escura.png")"
+              Width="200"
+              Alt="Jessica Albuquerque Psicóloga"
+              Class="ma-4" />
+
+    <MudNavLink Href="#publico">Para quem é a Terapia?</MudNavLink>
+    <MudNavLink Href="#como-funciona">Como Funciona?</MudNavLink>
+    <MudNavLink Href="#agende">Agende sua Consulta</MudNavLink>
+</MudNavMenu>
+
+@code {
+    [Parameter] public bool IsDarkMode { get; set; }
+}

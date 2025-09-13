@@ -1,0 +1,106 @@
+﻿@page "/"
+@layout Layout.MainLayout
+
+<PageTitle>Psicóloga Jéssica Albuquerque | Terapia Online e Presencial</PageTitle>
+<HeadContent>
+    <meta name="description" content="Psicóloga Jéssica Albuquerque. Acolhimento e cuidado para sua saúde mental. Especialista em ansiedade, depressão e autoconhecimento. Agende sua consulta." />
+    <meta name="keywords" content="psicóloga, psicologia, terapia, ansiedade, depressão, autoconhecimento, jéssica albuquerque" />
+</HeadContent>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Fixed="true">
+    <MudGrid>
+        <!-- Hero Section -->
+        <MudGrid Class="d-flex space-around align-center " Spacing="4"
+         Style="background-image:url('/images/green-circle-bg.svg');
+                background-size:contain;
+                background-position: 1% 1%;
+                background-repeat: no-repeat;
+                min-height: 100vh;
+                ">
+            <MudItem sm=12 md=6>
+                <MudImage Src="images/Psicologa_Jessica_Albuquerque-removebg-preview.png" 
+                Alt="Jessica Albuquerque Psicologa" 
+                Style="height:100%; object-fit:cover;"/>
+            </MudItem>
+
+            <MudSpacer/>
+
+            <MudItem sm=12 md=6>
+                <MudText Typo="Typo.h3" GutterBottom="true">Jéssica Albuquerque</MudText>
+                <MudText Typo="Typo.h5" Color="Color.Primary" GutterBottom="true">Psicóloga Clínica | CRP 06/205589</MudText>
+                <MudText Typo="Typo.body1">Acolhimento, empatia e ciência para sua jornada de bem-estar emocional.</MudText>
+            </MudItem>
+         </MudGrid>
+
+        <MudGrid xs="10" 
+				 Style="
+                        background-color: white;
+                        height: 20vh;
+                        border-radius: 20px;
+                        margin-top: -7%;
+                ">
+			<MudItem />
+		</MudGrid>
+
+        
+        <!-- "Para quem é a terapia?" Section -->
+        <MudItem xs="12" id="publico">
+            <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mt-8">Para quem é a terapia?</MudText>
+            <MudText Align="Align.Center" Class="mb-8">A terapia é um espaço para todos que buscam uma vida mais leve e significativa. Se você se identifica com algum dos pontos abaixo, eu posso te ajudar:</MudText>
+            <MudGrid Spacing="4" Justify="Justify.Center">
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="2">
+                        <MudIcon Icon="@Icons.Material.Filled.WavingHand" Color="Color.Primary" Style="font-size: 48px;" />
+                        <MudText Typo="Typo.h6" GutterBottom="true">Ansiedade</MudText>
+                        <MudText>Sente que a preocupação e o medo dominam seus dias.</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="2">
+                        <MudIcon Icon="@Icons.Material.Filled.HeartBroken" Color="Color.Primary" Style="font-size: 48px;" />
+                        <MudText Typo="Typo.h6">Baixa Autoestima</MudText>
+                        <MudText>Dificuldade em reconhecer seu próprio valor e se sente inseguro.</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="2">
+                        <MudIcon Icon="@Icons.Material.Filled.SyncProblem" Color="Color.Primary" Style="font-size: 48px;" />
+                        <MudText Typo="Typo.h6">Relacionamentos</MudText>
+                        <MudText>Enfrenta conflitos ou dificuldades em suas relações interpessoais.</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+
+        <!-- "Como funciona?" Section -->
+        <MudItem xs="12" id="como-funciona">
+            <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mt-8">Como funciona a terapia?</MudText>
+            <MudList T="int">
+                <MudListItem Icon="@Icons.Material.Filled.ChatBubble">Sessões semanais de 50 minutos, realizadas online com total sigilo.</MudListItem>
+                <MudListItem Icon="@Icons.Material.Filled.CalendarToday">Um processo contínuo e personalizado, focado em suas metas e necessidades.</MudListItem>
+                <MudListItem Icon="@Icons.Material.Filled.Favorite">Um ambiente seguro e livre de julgamentos para você se expressar.</MudListItem>
+            </MudList>
+        </MudItem>
+
+        <!-- CTA Section -->
+        <MudItem xs="12" id="agende" Class="text-center mt-8">
+            <MudText Typo="Typo.h4" GutterBottom="true">Vamos começar?</MudText>
+            <MudText Class="mb-4">Dê o primeiro passo em direção a uma vida mais equilibrada e feliz.</MudText>
+            <MudButton Href="https://wa.me/5511999999999" Target="_blank" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" StartIcon="@Icons.Custom.Brands.WhatsApp">Agende sua consulta por WhatsApp</MudButton>
+        </MudItem>
+
+    </MudGrid>
+</MudContainer>
+
+<!-- Footer -->
+<MudPaper Elevation="3" Class="pa-4 mt-16">
+    <MudGrid justify="Justify.SpaceBetween" alignitems="AlignItems.Center">
+        <MudItem>
+            <MudText Typo="Typo.body2">© @DateTime.Now.Year - Jéssica Albuquerque - Psicóloga | CRP 06/205589</MudText>
+        </MudItem>
+        <MudItem>
+            <MudIconButton Href="mailto:contato@jessicaalbuquerque.com.br" Icon="@Icons.Material.Filled.Email" />
+            <MudIconButton Href="https://instagram.com/seu_instagram" Target="_blank" Icon="@Icons.Custom.Brands.Instagram" />
+        </MudItem>
+    </MudGrid>
+</MudPaper>
