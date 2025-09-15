@@ -1,6 +1,8 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@inject PsicologaJessicaAlbuquerque.Services.ThemeService ThemeService
+@implements IDisposable
 
-<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="_theme" />
+<MudThemeProvider IsDarkMode="ThemeService.IsDarkMode" Theme="new PsicologaJessicaAlbuquerque.Layout.MainLayoutBase().Theme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -13,13 +15,13 @@
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Brightness4"
                        Color="Color.Primary"
-                       OnClick="@(() => _isDarkMode = !_isDarkMode)" />
+                       OnClick="@(() => ThemeService.ToggleTheme())" />
     </MudAppBar>
 
-    <MudDrawer @bind-Open="@_drawerOpen"
+    <MudDrawer @bind-Open="@DrawerOpen"
                Elevation="2"
                Variant="DrawerVariant.Responsive">
-        <NavMenu IsDarkMode="_isDarkMode" />
+        <NavMenu IsDarkMode="ThemeService.IsDarkMode" />
     </MudDrawer>
 
     <MudMainContent>
@@ -30,27 +32,20 @@
 </MudLayout>
 
 @code {
-    private bool _drawerOpen = true;
-    private bool _isDarkMode = false;
+    private bool DrawerOpen = true;
 
-    private readonly MudTheme _theme = new MudTheme()
+    protected override void OnInitialized()
     {
-        PaletteLight = new PaletteLight()
-        {
-            Primary = "#004d40",
-            AppbarBackground = "#f5f5f5",
-            Background = "#fafafa",
-            DrawerBackground = "#ffffff",
-            Surface = "#ffffff"
-        },
-        PaletteDark = new PaletteDark()
-        {
-            Primary = "#66bb6a"
-        }
-    };
+        ThemeService.OnChange += StateHasChanged;
+    }
 
     private void DrawerToggle()
     {
-        _drawerOpen = !_drawerOpen;
+        DrawerOpen = !DrawerOpen;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnChange -= StateHasChanged;
     }
 }

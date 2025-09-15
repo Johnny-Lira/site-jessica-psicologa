@@ -1,5 +1,7 @@
 ﻿@page "/"
 @layout Layout.MainLayout
+@inject PsicologaJessicaAlbuquerque.Services.ThemeService ThemeService
+@implements IDisposable
 
 <PageTitle>Psicóloga Jéssica Albuquerque | Terapia Online e Presencial</PageTitle>
 <HeadContent>
@@ -19,7 +21,7 @@
                 ">
             <MudItem sm=12 md=6>
                 <MudImage Src="images/Psicologa_Jessica_Albuquerque-removebg-preview.png" 
-                Alt="Jessica Albuquerque Psicologa" 
+                Alt="Jessica Albuquerque Psicologa"
                 Style="height:100%; object-fit:cover;"/>
             </MudItem>
 
@@ -32,17 +34,69 @@
             </MudItem>
          </MudGrid>
 
-        <MudGrid xs="10" 
-				 Style="
-                        background-color: white;
-                        height: 20vh;
-                        border-radius: 20px;
-                        margin-top: -7%;
-                ">
-			<MudItem />
+        <MudGrid xs="10"
+                 Justify="Justify.Center"
+                 AlignItems="AlignItems.Center"
+                 Style=@(
+                 "background-color:" +
+                 (ThemeService.IsDarkMode
+                 ? new PsicologaJessicaAlbuquerque.Layout.MainLayoutBase().Theme.PaletteDark.BackgroundGray
+                 : new PsicologaJessicaAlbuquerque.Layout.MainLayoutBase().Theme.PaletteLight.White) +
+                 "; height:20vh; border-radius:20px; margin-top:-7%;")>
+
+            <MudItem xs="12" sm="4" >
+                <MudText Typo="Typo.h3" Align="Align.Center" Style="font-weight: bold;">2.500</MudText>
+                <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="text-transform: uppercase;">Atendimentos realizados</MudText>
+            </MudItem>
+
+            <MudItem xs="12" sm="4" >
+                <MudText Typo="Typo.h3" Align="Align.Center" Style="font-weight: bold;">50</MudText>
+                <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="text-transform: uppercase;">Palestras Realizadas</MudText>
+            </MudItem>
+
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.h3" Align="Align.Center" Style="font-weight: bold;">10</MudText>
+                <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="text-transform: uppercase;">anos de experiência</MudText>
+            </MudItem>
+        </MudGrid>
+
+		<!-- "Sobre Min" Section -->
+        <MudGrid Spacing="4" Justify="Justify.Center" id="sobre">
+			<MudItem xs="12" md="6" Class="px-10" >
+                <MudText Typo="Typo.h4" Align="Align.Left" GutterBottom="true" Class="mt-8" Style="font-weight: bold;">
+                    Psic. Jéssica Albuquerque
+                </MudText>
+				<MudText Align="Align.Left" Class="mb-8">
+                    Psicóloga formada pela UFRJ, especialista em Terapia Cognitivo Comportamental e Saúde Mental, com cerca de 10 anos de experiência em atendimento psicológico individual e em grupo, atuando em diversos contextos como clínico, escolar e hospital dia.
+                </MudText>
+                <MudText Align="Align.Left" Class="mb-8">
+                    Trabalhei com o público Infanto Juvenil, com enfoque em adolescentes e também com muitos adultos ao longo da minha carreira.
+                    <br/>
+                    Durante minha graduação, fui monitora da clínica escola (DPA), onde supervisionei outros estagiários, plantões e triagens de paciente.
+                </MudText>
+                <MudText Align="Align.Left" Class="mb-8">
+                    Fui Diretora de Projetos da Insight, Empresa Júnior de Psicologia, onde desenvolvi projetos de pesquisa de clima organizacional, avaliação de desempenho, treinamento e desenvolvimento e recrutamento e seleção. Essas experiências me proporcionaram visão sistêmica, habilidades sociais, flexibilidade, liderança e prática na criação de estratégias para ambientes mais saudáveis e produtivos.
+                </MudText>
+                <MudText Align="Align.Left" Class="mb-8">
+                    Minha trajetória é marcada por atendimentos individuais e trabalho em equipes multidisciplinares, oferecendo cuidado integral e centrado no paciente.
+                    <br />
+                    Tenho experiência no acolhimento de demandas relacionadas à diversidade, identidade de gênero e sexualidade, onde estou em constante capacitações, atualizações e congressos relacionados a temática.
+                </MudText>
+                <MudText Align="Align.Left" Class="mb-8">
+                    Busco não apenas tratar questões emocionais e comportamentais, como transtornos mentais, mas também prevenir adoecimentos e promover saúde mental e bem estar.
+                </MudText>
+            </MudItem>
+
+			<MudItem xs="12" md="6">
+				<MudImage Src="images/congresso.jpg"
+						  Alt="Jessica Albuquerque Psicologa"
+                          Elevation="25" 
+                          Class="rounded-lg ma-4"
+                          Style="width:100%; height:auto;"
+                          />
+			</MudItem>
 		</MudGrid>
 
-        
         <!-- "Para quem é a terapia?" Section -->
         <MudItem xs="12" id="publico">
             <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mt-8">Para quem é a terapia?</MudText>
@@ -104,3 +158,15 @@
         </MudItem>
     </MudGrid>
 </MudPaper>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnChange -= StateHasChanged;
+    }
+}

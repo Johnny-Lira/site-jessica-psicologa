@@ -1,4 +1,5 @@
 using MudBlazor.Services;
+using PsicologaJessicaAlbuquerque.Services;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton<ThemeService>();
 
 WebApplication app = builder.Build();
 
